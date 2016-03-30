@@ -1,0 +1,19 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Include:
+    - 'Gemfile'
+  Exclude:
+    - 'config/**/*'
+    - 'script/**/*'
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
