@@ -15,7 +15,9 @@ RSpec.describe Responders::SilenceOnOptions do
 
   describe "#call" do
     it "returns nil" do
-      expect(described_class.new("-i").call).to be_nil
+      expect(described_class.new("-i").call).to(
+        eq("I don't know anything about '-i'")
+      )
     end
   end
 end

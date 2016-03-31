@@ -9,14 +9,15 @@ RSpec.describe Responder do
       "decorated Slack::RealTime::Client",
       bot_name: "bot",
       team: "bot_team",
-      domain: "domain"
+      domain: "domain",
+      channels: { "OSDT3241" => double }
     )
   }
   let(:data) {
     double(
       "message recieved from slack",
       text: "Array#first",
-      channel: "channel"
+      channel: "priv"
     )
   }
 
@@ -34,14 +35,32 @@ RSpec.describe Responder do
     it "uses client to send message" do
       aggregate_failures do
         expect(client).to(
-          receive(:typing).with(channel: "channel")
+          receive(:typing).with(channel: "priv")
         )
         expect(client).to(
-          receive(:message).with(channel: "channel", text: "message")
+          receive(:message).with(channel: "priv", text: "message")
         )
-      end
 
-      responder.message[data]
+        responder.message[data]
+      end
+    end
+
+    context "when public channel" do
+      let(:data) {
+        double(
+          "message recieved from slack",
+          text: "Array#first",
+          channel: "OSDT3241"
+        )
+      }
+
+      it "doesn't send the message" do
+        aggregate_failures do
+          expect(client).not_to receive(:message)
+          expect(client).not_to(receive(:typing))
+        end
+        responder.message[data]
+      end
     end
   end
 end
