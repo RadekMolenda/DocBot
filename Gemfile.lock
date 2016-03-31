@@ -1,14 +1,52 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (4.2.6)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
     ast (2.2.0)
+    celluloid (0.17.3)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-io (0.17.3)
+      celluloid (>= 0.17.2)
+      nio4r (>= 1.1)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.5)
+      timers (>= 4.1.1)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.0)
+      faraday (>= 0.7.4, < 0.10)
     ffi (1.9.10)
+    gli (2.13.4)
+    hashie (3.4.3)
+    hitimes (1.2.3)
+    i18n (0.7.0)
     iniparse (1.4.2)
     json (1.8.3)
+    minitest (5.8.4)
+    multipart-post (2.0.0)
+    nio4r (1.2.1)
     overcommit (0.32.0)
       childprocess (~> 0.5.8)
       iniparse (~> 1.4)
@@ -41,16 +79,34 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    slack-ruby-client (0.7.0)
+      activesupport
+      faraday
+      faraday_middleware
+      gli
+      hashie
+      json
+      websocket-driver
+    thread_safe (0.3.5)
+    timers (4.1.1)
+      hitimes
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
     unicode-display_width (1.0.3)
+    websocket-driver (0.6.3)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  celluloid-io
   overcommit
   rspec
   rubocop
   simplecov
+  slack-ruby-client
 
 BUNDLED WITH
    1.11.2

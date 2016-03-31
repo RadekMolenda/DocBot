@@ -2,6 +2,10 @@
 
 source "https://rubygems.org"
 
+gem "slack-ruby-client"
+
+gem "celluloid-io"
+
 group :test do
   gem "rspec"
   gem "simplecov", require: false
