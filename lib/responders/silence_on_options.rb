@@ -7,7 +7,7 @@ module Responders
     end
 
     def apply?
-      text =~ /^ *--?/ && true
+      !(text =~ /^ *--?/).nil?
     end
 
     def call

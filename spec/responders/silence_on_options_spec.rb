@@ -9,14 +9,14 @@ RSpec.describe Responders::SilenceOnOptions do
         expect(described_class.new("-i").apply?).to be(true)
         expect(described_class.new("      -i    ").apply?).to be(true)
         expect(described_class.new(" --server 1243").apply?).to be(true)
-        expect(described_class.new("hello--server 1243").apply?).to be_falsey
-        expect(described_class.new("hello-world").apply?).to be_falsey
+        expect(described_class.new("hello--server 1243").apply?).to be(false)
+        expect(described_class.new("hello-world").apply?).to be(false)
       end
     end
   end
 
   describe "#call" do
-    it "returns nil" do
+    it "doesn't know anything about options" do
       expect(described_class.new("-i").call).to(
         eq("I don't know anything about '-i'")
       )
