@@ -7,6 +7,7 @@ require_relative "./responders"
 class Responder
   REPLIES = [
     Responders::SilenceOnOptions,
+    Responders::Emoji,
     Responders::SimpleDoc
   ].freeze
 
