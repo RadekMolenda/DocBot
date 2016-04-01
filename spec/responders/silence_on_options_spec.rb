@@ -9,6 +9,8 @@ RSpec.describe Responders::SilenceOnOptions do
         expect(described_class.new("-i").apply?).to be(true)
         expect(described_class.new("      -i    ").apply?).to be(true)
         expect(described_class.new(" --server 1243").apply?).to be(true)
+        expect(described_class.new("hello--server 1243").apply?).to be_falsey
+        expect(described_class.new("hello-world").apply?).to be_falsey
       end
     end
   end
