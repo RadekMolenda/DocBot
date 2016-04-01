@@ -1,1 +1,3 @@
-# DocBot Ruby Standard library Slack documenation bot
+# DocBot
+
+Ruby Standard library Slack documenation bot
