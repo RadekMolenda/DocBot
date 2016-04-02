@@ -3,6 +3,18 @@
 require_relative "./responders"
 
 # Public: Responds to client messages
+#         Responder uses three types of replies listed in Responder::REPLIES
+#         Each reply implements two public methods:
+#         `#apply?` and `#call`
+#         apply? - recognizes text pattern and decides if current reply
+#         should be used
+#         call - returns generated documentation
+#         the execution stops when `apply?` returns true.
+#
+#         For example - if SilenceOfOptions#apply? returns true, the Emoji
+#         and SimpleDoc replies will not be processed.
+#         With this pattern it should be very easy to add different replies
+#         like AtMention or even MeaningOfLife and decide about their precedence
 #
 class Responder
   REPLIES = [
@@ -47,7 +59,7 @@ class Responder
 
   # Internal: Use available Responders to pick the best response
   #
-  # Returns documentation or couldn't find documenation text String.
+  # Returns documentation or couldn't find documentation text String.
   def resp(data)
     REPLIES
       .lazy

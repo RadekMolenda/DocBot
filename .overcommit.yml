@@ -3,6 +3,8 @@ PreCommit:
     enabled: true
   TrailingWhitespace:
     enabled: true
+    exclude:
+      - README.md
 
 PostCheckout:
   ALL: # Special hook name that customizes all hooks of this type
