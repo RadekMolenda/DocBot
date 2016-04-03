@@ -8,14 +8,14 @@ RSpec.describe Responder do
     double(
       "decorated Slack::RealTime::Client",
       bot_name: "bot",
-      team: "bot_team",
+      team_name: "bot_team",
       domain: "domain",
       channels: { "OSDT3241" => double }
     )
   }
   let(:data) {
-    double(
-      "message recieved from slack",
+    instance_double(
+      "Slack::Messages::Message",
       text: "Array#first",
       channel: "priv"
     )
@@ -47,8 +47,8 @@ RSpec.describe Responder do
 
     context "when public channel" do
       let(:data) {
-        double(
-          "message recieved from slack",
+        instance_double(
+          "Slack::Messages::Message",
           text: "Array#first",
           channel: "OSDT3241"
         )

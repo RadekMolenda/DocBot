@@ -13,7 +13,7 @@ class ClientDecorator < SimpleDelegator
   # Public: Get team name
   #
   # Returns team name String.
-  def team
+  def team_name
     __getobj__.team.name
   end
 

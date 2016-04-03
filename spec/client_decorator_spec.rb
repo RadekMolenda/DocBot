@@ -4,10 +4,17 @@ require "spec_helper"
 
 RSpec.describe ClientDecorator do
   let(:slack_client) {
-    double(
+    instance_double(
       "Slack::RealTime::Client",
-      self: double(name: "slack_bot"),
-      team: double(name: "slack_bot_team", domain: "team-domain")
+      self: instance_double(
+        "Slack::RealTime::Models::User",
+        name: "slack_bot"
+      ),
+      team: instance_double(
+        "Slack::RealTime::Models::Team",
+        name: "slack_bot_team",
+        domain: "team-domain"
+      )
     )
   }
   let(:client) { described_class.new(slack_client) }
@@ -15,7 +22,7 @@ RSpec.describe ClientDecorator do
   it "decorates client" do
     aggregate_failures "api" do
       expect(client.bot_name).to eq "slack_bot"
-      expect(client.team).to eq "slack_bot_team"
+      expect(client.team_name).to eq "slack_bot_team"
       expect(client.domain).to eq "https://team-domain.slack.com"
     end
   end

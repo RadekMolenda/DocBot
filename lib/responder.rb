@@ -36,7 +36,7 @@ class Responder
   # Returns proc.
   def hello
     lambda do |_|
-      puts "Connected! As: '#{client.bot_name}' to: '#{client.team}' \
+      puts "Connected! As: '#{client.bot_name}' to: '#{client.team_name}' \
         at #{client.domain}.".gsub(/ +/, " ")
     end
   end

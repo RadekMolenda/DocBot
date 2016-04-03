@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Responders::SimpleDoc do
   let(:simple_doc) { described_class.new(text, ri_doc: ri_doc) }
   let(:text) { "Array#first" }
-  let(:ri_doc) { double("RiDoc") }
+  let(:ri_doc) { class_double("RiDoc") }
 
   describe "#apply?" do
     it "is always true" do
