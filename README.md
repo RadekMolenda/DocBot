@@ -1,5 +1,5 @@
 # Welcome to DocBot
-Ruby Standard library Slack documentation bot
+Ruby Standard library Slack documentation bot.
 
 ![hello](https://cloud.githubusercontent.com/assets/57065/14222235/771916d8-f86e-11e5-80d7-022cd95ee3d1.gif)
 
@@ -52,9 +52,13 @@ Run [`script/test`](https://github.com/RadekMolenda/DocBot/blob/master/script/te
 # Code Status
 [![Code Climate](https://codeclimate.com/github/RadekMolenda/DocBot/badges/gpa.svg)](https://codeclimate.com/github/RadekMolenda/DocBot) [![Build Status](https://travis-ci.org/RadekMolenda/DocBot.svg?branch=master)](https://travis-ci.org/RadekMolenda/DocBot)
 
+# Explanation
+The app uses [slack-ruby-client](https://github.com/dblock/slack-ruby-client) which seems to be well maintained and clearly written. It also supports concurrency - this is why I had to used `celluloid-io` gem as well. Writing client from scratch seemed to be pointless when there is existing and well documented gem that can be used. [Slack official documentation](https://api.slack.com/community) is also recommending using this gem. I wanted to write this app in Object Oriented manner. I also wanted to make it easy to add another types of responses without changing the code much this is why I introduced Responder class and Responders module.
+
+Personally I'd like to rewrite this app in Elixir in the future as Elixir's out of the box support for multiprocessing and concurrency seems like a perfect tool for real time documentation generation. Can't wait to see the app spawning hundreds of processes with different code documentation generators and picking the best matches.
+
 # Troubleshooting
 If you are not getting any meaningful documentation from the bot please check if Ruby the app is using is configured and compiled with ri documentation. Removing ruby 2.3.0 and running `script/setup` should fix this issue.
-
 
 # License
 DocBot is released under the [MIT License](http://www.opensource.org/licenses/MIT).
