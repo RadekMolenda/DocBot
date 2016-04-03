@@ -4,6 +4,5 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-script/setup
-
+echo "===> Starting console..."
 bundle exec irb

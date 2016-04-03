@@ -6,7 +6,5 @@ cd "$(dirname "$0")/.."
 
 [ -z "$DEBUG" ] || set -x
 
-script/setup
-
 echo "===> Running tests..."
 bundle exec rspec spec
