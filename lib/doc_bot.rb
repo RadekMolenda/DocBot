@@ -21,8 +21,8 @@ class DocBot
   #
   # Return nothing.
   def run!
-    client.on :hello, &responder.hello
-    client.on :message, &responder.message
+    client.on(:hello, &responder.hello)
+    client.on(:message, &responder.message)
     client.start!
   end
 
