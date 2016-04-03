@@ -5,14 +5,11 @@
 #
 module Responders
   class Emoji
+    MESSAGE_START_WITH_EMOJI = /^:\+?\-?\w+:/
     # Public: Initialize a Responders::SimpleDoc
     #
     # text     - A String request for documentation
-    # ri_doc   - An Object generating documenation
-    #            at least responding to `get` method with `text` as paramater
-    #            (not used in this class)
-    # bot_name - String or nil (not used in this class)
-    def initialize(text, ri_doc: nil, bot_name: nil)
+    def initialize(text, **_args)
       @text = text
     end
 
@@ -20,7 +17,7 @@ module Responders
     #
     # Returns true
     def apply?
-      !(/^:\+?\-?\w+:/ =~ text).nil?
+      !(MESSAGE_START_WITH_EMOJI =~ text).nil?
     end
 
     # Public: Reply politely
@@ -39,6 +36,6 @@ module Responders
 
     private
 
-    attr_reader :text, :ri_doc
+    attr_reader :text
   end
 end

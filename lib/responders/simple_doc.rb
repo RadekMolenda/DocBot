@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Public: Knows if it's applicable to genearate documentation
+# Public: Knows if it's applicable to generate documentation
 # and generates the documentation
 #
 module Responders
@@ -8,10 +8,9 @@ module Responders
     # Public: Initialize a Responders::SimpleDoc
     #
     # text     - A String request for documentation
-    # ri_doc   - An Object generating documenation
-    #            at least responding to `get` method with `text` as paramater
-    # bot_name - String or nil (not used in this class)
-    def initialize(text, ri_doc: RiDoc, bot_name: nil)
+    # ri_doc   - An Object generating documentation
+    #            at least responding to `get` method with `text` as parameter
+    def initialize(text, ri_doc: RiDoc)
       @text = text
       @ri_doc = ri_doc
     end
@@ -23,7 +22,7 @@ module Responders
       true
     end
 
-    # Public: Generate the documenation
+    # Public: Generate the documentation
     #
     # &block - optional block to be called before documentation generation
     #

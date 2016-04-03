@@ -2,8 +2,9 @@
 
 require "spec_helper"
 
-RSpec.describe Responders::SimpleDoc do
-  let(:simple_doc) { described_class.new(text, ri_doc: ri_doc) }
+RSpec.describe Responders::SimpleDoc, type: :responders do
+  subject(:simple_doc) { described_class.new(text, ri_doc: ri_doc) }
+
   let(:text) { "Array#first" }
   let(:ri_doc) { class_double("RiDoc") }
 

@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
-# Public: Knows if it's applicable to not genearate documentation
+# Public: Knows if it's applicable to not generate documentation
 # it prevents from passing extra options to system commands
 #
 module Responders
   class SilenceOnOptions
+    RI_COMMAND_OPTION_REGEX = /^ *--?/
     # Public: Initialize a Responders::SimpleDoc
     #
     # text     - A String request for documentation
-    # ri_doc   - An Object generating documenation
-    #            at least responding to `get` method with `text` as paramater
-    #            (not used in this class)
-    # bot_name - String or nil (not used in this class)
-    def initialize(text, ri_doc: nil, bot_name: nil)
+    def initialize(text, **_args)
       @text = text
     end
 
@@ -21,10 +18,10 @@ module Responders
     #
     # Returns true
     def apply?
-      !(text =~ /^ *--?/).nil?
+      !(text =~ RI_COMMAND_OPTION_REGEX).nil?
     end
 
-    # Public: Don't generate the documenation
+    # Public: Don't generate the documentation
     #
     # Returns String documentation
     def call

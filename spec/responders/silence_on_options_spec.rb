@@ -2,21 +2,19 @@
 
 require "spec_helper"
 
-RSpec.describe Responders::SilenceOnOptions do
+RSpec.describe Responders::SilenceOnOptions, type: :responders do
   describe "#apply?" do
-    it "returns true when text seems like ri option" do
-      aggregate_failures do
-        expect(described_class.new("-i").apply?).to be(true)
-        expect(described_class.new("      -i    ").apply?).to be(true)
-        expect(described_class.new(" --server 1243").apply?).to be(true)
-        expect(described_class.new("hello--server 1243").apply?).to be(false)
-        expect(described_class.new("hello-world").apply?).to be(false)
-      end
+    it "is true when text seems like ri command option", :aggregate_failures do
+      expect(described_class.new("-i").apply?).to be(true)
+      expect(described_class.new("      -i    ").apply?).to be(true)
+      expect(described_class.new(" --server 1243").apply?).to be(true)
+      expect(described_class.new("hello--server 1243").apply?).to be(false)
+      expect(described_class.new("hello-world").apply?).to be(false)
     end
   end
 
   describe "#call" do
-    it "doesn't know anything about options" do
+    it "returns message it nothing known about options" do
       expect(described_class.new("-i").call).to(
         eq("I don't know anything about '-i'")
       )

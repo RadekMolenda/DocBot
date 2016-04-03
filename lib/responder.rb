@@ -63,15 +63,15 @@ class Responder
   def resp(data)
     REPLIES
       .lazy
-      .map { |reply| reply.new(data.text, bot_name: client.bot_name) }
+      .map { |reply| reply.new(data.text) }
       .find(&:apply?)
-      .call { client.typing channel: data.channel }
+      .call { client.typing(channel: data.channel) }
   end
 
   def send_response(message, data)
     return if message.nil?
 
-    client.message channel: data.channel, text: message
+    client.message(channel: data.channel, text: message)
   end
 
   def public_conversation?(channel)
