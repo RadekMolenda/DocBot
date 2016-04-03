@@ -4,7 +4,10 @@ require "slack-ruby-client"
 require "celluloid"
 
 def config_fail
-  raise "Missing ENV[SLACK_API_TOKEN]!"
+  raise(
+    KeyError,
+    'ENV["SLACK_API_TOKEN"] - ENV key not found "SLACK_API_TOKEN"'
+  )
 end
 
 Slack.configure do |config|
