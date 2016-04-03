@@ -14,13 +14,13 @@ class ClientDecorator < SimpleDelegator
   #
   # Returns team name String.
   def team_name
-    __getobj__.team.name
+    team.name
   end
 
   # Public: Get slack used domain
   #
-  # Returns slack teams url addres String.
+  # Returns slack teams URL address String.
   def domain
-    "https://#{__getobj__.team.domain}.slack.com"
+    "https://#{team.domain}.slack.com"
   end
 end
